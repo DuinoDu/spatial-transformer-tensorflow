@@ -1,0 +1,16 @@
+.idea
+*.swp
+*.o
+*.pyc
+*.npy
+*.ckpt
+*.tar
+*.out
+*.tar.gz
+*.so
+*.ipynb_checkpoints
+experiments/logs/*
+experiments/eval/*
+output
+logs
+utest
