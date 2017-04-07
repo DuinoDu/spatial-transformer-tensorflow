@@ -17,11 +17,13 @@ import tensorflow as tf
 from spatial_transformer import transformer
 import numpy as np
 import matplotlib.pyplot as plt
+import cv2
 
 # %% Create a batch of three images (1600 x 1200)
 # %% Image retrieved from:
 # %% https://raw.githubusercontent.com/skaae/transformer_network/master/cat.jpg
 im = ndimage.imread('cat.jpg')
+print im.shape
 im = im / 255.
 im = im.reshape(1, 1200, 1600, 3)
 im = im.astype('float32')
@@ -45,7 +47,7 @@ with tf.variable_scope('spatial_transformer_0'):
     W_fc1 = tf.Variable(tf.zeros([1200 * 1600 * 3, n_fc]), name='W_fc1')
 
     # %% Zoom into the image
-    initial = np.array([[0.5, 0, 0], [0, 0.5, 0]])
+    initial = np.array([[1, 0, 0], [0, 1, 0]])
     initial = initial.astype('float32')
     initial = initial.flatten()
 
@@ -55,7 +57,7 @@ with tf.variable_scope('spatial_transformer_0'):
 
 # %% Run session
 sess = tf.Session()
-sess.run(tf.initialize_all_variables())
+sess.run(tf.global_variables_initializer())
 y = sess.run(h_trans, feed_dict={x: batch})
-
-# plt.imshow(y[0])
+cv2.imshow('0', y[0]) 
+cv2.waitKey(0)

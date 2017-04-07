@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+Processing file 'spatial_transformer.py'
+ outputting to 'spatial_transformer_1.0.py'
+--------------------------------------------------------------------------------
+
+'spatial_transformer.py' Line 164
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.batch_matmul' to 'tf.matmul'
+
+    Old:             T_g = tf.batch_matmul(theta, grid)
+                           ~~~~~~~~~~~~~~~              
+    New:             T_g = tf.matmul(theta, grid)
+                           ~~~~~~~~~              
+
+'spatial_transformer.py' Line 140
+--------------------------------------------------------------------------------
+
+Added keyword 'concat_dim' to reordered function 'tf.concat'
+Added keyword 'values' to reordered function 'tf.concat'
+
+    Old:             grid = tf.concat(0, [x_t_flat, y_t_flat, ones])
+                                                                     
+    New:             grid = tf.concat(concat_dim=0, values=[x_t_flat, y_t_flat, ones])
+                                      ~~~~~~~~~~~   ~~~~~~~                            
+
+
